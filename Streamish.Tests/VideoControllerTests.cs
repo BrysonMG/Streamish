@@ -9,22 +9,23 @@ using Xunit;
 
 namespace Streamish.Tests
 {
+    //This is where we write tests for our Video Controller
     public class VideoControllerTests
     {
-        [Fact]
+        [Fact] // the Fact attribute denotes a method as being a test.
         public void Get_Returns_All_Videos()
         {
-            // Arrange 
+            // Arrange - set up the things you need
             var videoCount = 20;
-            var videos = CreateTestVideos(videoCount);
+            var videos = CreateTestVideos(videoCount); //uses a method that generates a mock List of Videos
 
-            var repo = new InMemoryVideoRepository(videos);
-            var controller = new VideoController(repo);
+            var repo = new InMemoryVideoRepository(videos); //This "memory repo" uses the provided video list instead of getting data from the database with SQL query
+            var controller = new VideoController(repo); //Create a new VideoController with our "memory repo" so we can test the methods in the VideoController
 
-            // Act 
-            var result = controller.Get();
+            // Act - call / run your test(s)
+            var result = controller.Get(); //Call the method(s) that need to be tested from the controller we created with the "memory repo"
 
-            // Assert
+            // Assert - Check the actual results against what was expected
             var okResult = Assert.IsType<OkObjectResult>(result);
             var actualVideos = Assert.IsType<List<Video>>(okResult.Value);
 

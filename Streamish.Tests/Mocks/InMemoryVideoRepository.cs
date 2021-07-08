@@ -6,11 +6,13 @@ using Streamish.Repositories;
 
 namespace Streamish.Tests.Mocks
 {
-    class InMemoryVideoRepository : IVideoRepository
+    // This is a repository that mimics the real VideoRepository
+    // In this repo, we use a mock list of videos rather than getting data from the database with SQL
+    class InMemoryVideoRepository : IVideoRepository // This repo inherits from the same interface as the real repo, which guarantees they contain the same methods
     {
-        private readonly List<Video> _data;
+        private readonly List<Video> _data; //This is a field for this repo. It will be the List of Videos that mimics what we would get from our database in the real repo
 
-        public List<Video> InternalData
+        public List<Video> InternalData //This is just a method that gets the list of videos that we constructed this repo with
         {
             get
             {
@@ -18,7 +20,7 @@ namespace Streamish.Tests.Mocks
             }
         }
 
-        public InMemoryVideoRepository(List<Video> startingData)
+        public InMemoryVideoRepository(List<Video> startingData) //This is the constructor for this repo
         {
             _data = startingData;
         }
