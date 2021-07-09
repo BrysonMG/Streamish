@@ -2,6 +2,11 @@ import React from "react";
 import { Card, CardBody } from "reactstrap";
 
 const Video = ({ video }) => {
+    let commentsArray = video.comments;
+    if (commentsArray === null) {
+        commentsArray = [];
+    }
+
     return (
         <Card >
             <p className="text-left px-2">Posted by: {video.userProfile.name}</p>
@@ -17,6 +22,11 @@ const Video = ({ video }) => {
                     <strong>{video.title}</strong>
                 </p>
                 <p>{video.description}</p>
+
+                <p><strong>Comments</strong></p>
+                {commentsArray.map(commentObj => {
+                    return (<p>UserID: {commentObj.userProfileId} --- {commentObj.message}</p>)
+                })}
             </CardBody>
         </Card>
     );

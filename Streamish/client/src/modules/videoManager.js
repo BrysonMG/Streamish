@@ -5,6 +5,16 @@ export const getAllVideos = () => {
         .then((res) => res.json())
 };
 
+export const getAllWithComments = () => {
+    return fetch('/api/Video/GetWithComments')
+        .then(res => res.json())
+}
+
+export const searchVideos = (searchString) => {
+    return fetch(`/api/Video/search?q=${searchString}&sortDesc=true`)
+        .then(res => res.json())
+}
+
 export const addVideo = (video) => {
     return fetch(baseUrl, {
         method: "POST",
