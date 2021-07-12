@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Video from './Video';
+import { VideoForm } from "./VideoForm";
 import { getAllWithComments, searchVideos } from "../modules/videoManager";
 
 export const VideoList = () => {
@@ -39,6 +40,8 @@ export const VideoList = () => {
 
     return (
         <>
+            <VideoForm reloadList={getVideos} />
+            <br />
             <input onKeyDown={handleEnterPress} onChange={handleInputChange} placeholder="Search" value={search} />
             <button type="button" onClick={getVideos}>See All</button>
 
