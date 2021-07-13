@@ -40,9 +40,8 @@ export const VideoList = () => {
 
     return (
         <>
-            <VideoForm reloadList={getVideos} />
-            <br />
             <input onKeyDown={handleEnterPress} onChange={handleInputChange} placeholder="Search" value={search} />
+            <br />
             <button type="button" onClick={getVideos}>See All</button>
 
             <div className="container">

@@ -1,11 +1,13 @@
-import { labeledStatement } from '@babel/types';
 import React, { useState } from 'react';
 import { addVideo } from '../modules/videoManager';
+import { useHistory } from 'react-router';
 
-export const VideoForm = ({ reloadList }) => {
+export const VideoForm = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [url, setUrl] = useState("");
+
+    const history = useHistory();
 
     const handleTitleChange = event => {
         let theTitle = event.target.value;
@@ -32,7 +34,7 @@ export const VideoForm = ({ reloadList }) => {
         }
 
         addVideo(videoObj).then(() => {
-            reloadList();
+            history.push("/");
         });
     }
 
@@ -53,3 +55,5 @@ export const VideoForm = ({ reloadList }) => {
         </div>
     )
 }
+
+export default VideoForm;

@@ -10,6 +10,10 @@ export const getAllWithComments = () => {
         .then(res => res.json())
 }
 
+export const getVideo = (id) => {
+    return fetch(`${baseUrl}/${id}`).then((res) => res.json());
+};
+
 export const searchVideos = (searchString) => {
     return fetch(`/api/Video/search?q=${searchString}&sortDesc=true`)
         .then(res => res.json())
